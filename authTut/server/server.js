@@ -32,6 +32,13 @@ passport.serializeUser((user, done) => {
   console.log('Inside serializeUser callback. User id is save to the session file store here')
   done(null, user.id);
 });
+
+passport.deserializeUser((id, done) => {
+  console.log('Inside deserializeUser callback')
+  console.log(`The user id passport saved in the session file store is: ${id}`)
+  const user = users[0].id === id ? users[0] : false; 
+  done(null, user);
+});
 // create the server
 const app = express();
 
@@ -81,6 +88,15 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
   })
   
+  app.get('/authrequired', (req, res) => {
+    console.log('Inside GET /authrequired callback')
+    console.log(`User authenticated? ${req.isAuthenticated()}`)
+    if(req.isAuthenticated()) {
+      res.send('you hit the authentication endpoint\n')
+    } else {
+      res.redirect('/')
+    }
+  })
 
 // tell the server what port to listen on
 app.listen(3000, () => {
