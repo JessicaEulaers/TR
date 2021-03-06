@@ -9,6 +9,26 @@
         "id":"d1u9nq",
         "email": "user2@example.com",
         "password": "password"
+      },
+      {
+        "id":"Wim",
+        "email": "user3@example.com",
+        "password": "password"
+      },
+      {
+        "id":"Nour",
+        "email": "user4@example.com",
+        "password": "password"
+      },
+      {
+        "id":"Brieuc",
+        "email": "user5@example.com",
+        "password": "password"
+      },
+      {
+        "id":"Rudi",
+        "email": "user6@example.com",
+        "password": "password"
       }
     ]
   }
