@@ -9,7 +9,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const axios = require('axios');
 
-
+//--------------------------------------------------Login----------------------------------------------------------------------------
 
 // configure passport.js to use the local strategy
 passport.use(new LocalStrategy(
@@ -54,7 +54,7 @@ app.use(session({
   store: new FileStore(),
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
 }))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -70,6 +70,7 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', (req, res, next) => {
+  
   passport.authenticate('local', (err, user, info) => {
     if(info) {return res.send(info.message)}
     if (err) { return next(err); }
@@ -83,13 +84,31 @@ app.post('/login', (req, res, next) => {
 
 app.get('/authrequired', (req, res) => {
   if(req.isAuthenticated()) {
-    res.render('registration.ejs',{})
+    res.redirect('/registration')
   } else {
     res.redirect('/')
   }
 })
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/login')
+  
+})
+//-----------------------------------------------Registation------------------------------------------------------------------------------- 
+
+app.get('/registration', (req, res) => {
+  var user_id = req.user.id
+
+  res.render('registration.ejs',{user_id: user_id })
+})
+app.post("/saveMorning", function(req, res){
+  
+  res.send('you clicked!');
+});
+
 
 // tell the server what port to listen on
 app.listen(3000, () => {
+
   console.log('Listening on localhost:3000')
 })
