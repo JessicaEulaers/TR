@@ -55,6 +55,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
+  cookie: { maxAge: 60 * 60  } // 1 hour
 }))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -104,9 +105,20 @@ app.get('/registration', (req, res) => {
 app.post("/saveMorning", function(req, res){
   
   res.send('you clicked!');
-});
+})
 
+//------------------------------------------------Users--------------------------------------------------------------------------------
+app.get("/newUser", function(req, res){
+  
+  res.render('users.ejs',{})
+})
 
+app.post("/newUser", function(req, res){
+  
+  res.send('you clicked!');
+})
+
+//-----------------------------------------------server-------------------------------------------------------------------------------------
 // tell the server what port to listen on
 app.listen(3000, () => {
 

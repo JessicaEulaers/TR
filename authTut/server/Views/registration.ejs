@@ -56,8 +56,9 @@
     <ul class="topnav">
     <li><a class="active" href="#home">Home</a></li>
     <li><a href="#news">News</a></li>
-    <li><a href="#contact">Contact</a></li>
+    
     <li class="right"><a href="/logout">Logout</a></li>
+    <li class="right"><a href="/newUser">Gebruikers</a></li>
     </ul>
 
     <div style="padding:0 16px;">
@@ -67,7 +68,7 @@
     </form>
     
 
-    <button class="button disabled"id='startLunch'>Start lunch</button>
+    <button class="button disabled"id='startLunch' onclick=saveStartLunch()>Start lunch</button>
     <button class="button disabled"id='eindeLunch'>Einde lunch</button>
     <button class="button disabled"id='avond'>avond</button>
     </div>

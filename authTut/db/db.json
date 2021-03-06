@@ -1,13 +1,14 @@
 {
     "users": [
       {
-        "id":"2f24vvg",
+        "_comment1":"never change this id",
+        "id":"2f24vvg", 
         "email": "test@test.com",
         "password": "password" 
       },
       {
-        "id":"d1u9nq",
-        "email": "user2@example.com",
+        "id":"admin",
+        "email": "admin@example.com",
         "password": "password"
       },
       {
