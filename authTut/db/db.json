@@ -1,35 +1,40 @@
 {
-    "users": [
-      {
-        "_comment1":"never change this id",
-        "id":"2f24vvg", 
-        "email": "test@test.com",
-        "password": "password" 
-      },
-      {
-        "id":"admin",
-        "email": "admin@example.com",
-        "password": "password"
-      },
-      {
-        "id":"Wim",
-        "email": "user3@example.com",
-        "password": "password"
-      },
-      {
-        "id":"Nour",
-        "email": "user4@example.com",
-        "password": "password"
-      },
-      {
-        "id":"Brieuc",
-        "email": "user5@example.com",
-        "password": "password"
-      },
-      {
-        "id":"Rudi",
-        "email": "user6@example.com",
-        "password": "password"
-      }
-    ]
-  }
+  "users": [
+    {
+      "_comment1": "never change this id",
+      "id": "2f24vvg",
+      "email": "test@test.com",
+      "password": "password"
+    },
+    {
+      "id": "admin",
+      "email": "admin@example.com",
+      "password": "password"
+    },
+    {
+      "id": "Wim",
+      "email": "user3@example.com",
+      "password": "password"
+    },
+    {
+      "id": "Nour",
+      "email": "user4@example.com",
+      "password": "password"
+    },
+    {
+      "id": "Brieuc",
+      "email": "user5@example.com",
+      "password": "password"
+    },
+    {
+      "id": "Rudi",
+      "email": "user6@example.com",
+      "password": "password"
+    },
+    {
+      "id": "ds",
+      "email": "test@test.com",
+      "password": "ds"
+    }
+  ]
+}

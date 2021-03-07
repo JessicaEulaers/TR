@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const axios = require('axios');
+const { flash } = require('express-flash-message');
+
 
 //--------------------------------------------------Login----------------------------------------------------------------------------
 
@@ -43,7 +45,7 @@ passport.deserializeUser((id, done) => {
 
 // create the server
 const app = express();
-
+app.set('view engine', 'ejs');
 // add & configure middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 //app.use(bodyParser.json())
@@ -59,6 +61,7 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // create the homepage route at '/'
 app.get('/', (req, res) => {
@@ -114,8 +117,26 @@ app.get("/newUser", function(req, res){
 })
 
 app.post("/newUser", function(req, res){
-  
-  res.send('you clicked!');
+   var id = req.body.id;
+   console.log(id);
+   axios.post('http://localhost:5000/users/', req.body)
+   .then(res.render('users.ejs'))
+   .catch(function (error) {
+    if (error.response.status == 500) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      
+     
+      
+     console.log('dubbel id' +error.response.status)
+    } 
+    else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
+    }
+    console.log(error.response.status)
+    console.log(error.config);
+  });
 })
 
 //-----------------------------------------------server-------------------------------------------------------------------------------------
