@@ -8,6 +8,7 @@
   <h2>Gebruikers beheren</h2>
   <br/><br/>
 
+
   <h4>Nieuwe gebruiker maken</h4>
   <form action='/newUser' method='POST'>
     <span><b>Id : </b><input type='text' name='id' id='id'></span>
@@ -15,6 +16,11 @@
     <span><b>Wachtwoord : </b><input type='password' name='password'></span>
     <span><button type='submit'>Toevoegen</button></span>
   </form>
-
+  <br/><br/>
+  <h4>Gebruiker opzoeken</h4>
+  <form action='/user/search' method='POST'>
+    <span><b>Id : </b><input type='text' name='id'></span>
+    <span><button type='submit'>Search</button></span>
+  </form>
 </body>
 </html>

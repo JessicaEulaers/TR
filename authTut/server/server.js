@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const axios = require('axios');
-const { flash } = require('express-flash-message');
+const flash  = require('connect-flash');
 
 
 //--------------------------------------------------Login----------------------------------------------------------------------------
@@ -115,28 +115,37 @@ app.get("/newUser", function(req, res){
   
   res.render('users.ejs',{})
 })
-
+app.get("/500",function(req, res){
+  
+  res.render('500.ejs',{})
+})
 app.post("/newUser", function(req, res){
    var id = req.body.id;
    console.log(id);
    axios.post('http://localhost:5000/users/', req.body)
-   .then(res.render('users.ejs'))
+   .then(res.redirect('/newUser'))
    .catch(function (error) {
-    if (error.response.status == 500) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      
-     
-      
-     console.log('dubbel id' +error.response.status)
-    } 
-    else {
-      // Something happened in setting up the request that triggered an Error
-      console.log('Error', error.message);
-    }
-    console.log(error.response.status)
-    console.log(error.config);
-  });
+        console.log(error.message);
+  })
+  ;
+})
+
+// FIND A user
+app.post('/user/search', (req, res) => {
+  //console.log(DB_URL + DB_VIEWS + 'allProducts' + '?key="' + req.body.name + '"');
+  var id = req.body.id;
+   console.log(id);
+  axios.get('http://localhost:5000/users/'+id )
+    .then(function (response) {
+      console.log(response.data);
+      if(response.data != null)
+        res.render('resultUser.ejs', { user: response.data });
+      else
+        res.render('search_not_found.ejs', {})
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
 })
 
 //-----------------------------------------------server-------------------------------------------------------------------------------------
